@@ -8,6 +8,7 @@ const { authMock, getProductsMock } = vi.hoisted(() => ({
 
 vi.mock("@/lib/auth", () => ({ auth: authMock }));
 vi.mock("@/lib/dummyjson", () => ({ getProducts: getProductsMock }));
+vi.mock("@/app/actions", () => ({ deleteProductAction: vi.fn() }));
 
 import { GET } from "@/app/api/products/route";
 
