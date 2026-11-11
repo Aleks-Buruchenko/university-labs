@@ -19,8 +19,6 @@ Products (вариант 2), Next.js App Router, TypeScript, DummyJSON.
 user@example.com / user123 — user.
 admin@example.com / admin123 — admin.
 
-Учётные записи заданы в коде только для учебной демонстрации. Для production необходимы база данных и безопасное хеширование паролей.
-
 ## .env.local
 
 ```dotenv
