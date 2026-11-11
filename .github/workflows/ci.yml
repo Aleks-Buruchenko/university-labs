@@ -1,0 +1,55 @@
+name: University Labs CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lab1:
+    name: Lab 1 — React + Vite
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: lab1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm run build
+
+  lab2:
+    name: Lab 2 — Next.js
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: lab2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install
+      - run: npm run build
+
+  lab3:
+    name: Lab 3 — Auth, Zod and tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: lab3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install
+      - run: npm test
+      - run: npm run coverage
+      - run: npm run build
+        env:
+          AUTH_SECRET: ci-only-test-secret-not-for-production
+          AUTH_URL: http://localhost:3000

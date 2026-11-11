@@ -1,4 +1,6 @@
+import { redirect } from "next/navigation";
 import { ProductDetails } from "@/app/components/ProductDetails";
+import { auth } from "@/lib/auth";
 import { getProductById } from "@/lib/dummyjson";
 
 interface Props {
@@ -6,6 +8,9 @@ interface Props {
 }
 
 export default async function ProductPage({ params }: Props) {
+  const session = await auth();
+  if (!session?.user) redirect("/login");
+
   const { id } = await params;
   const productId = Number(id);
   const product =
